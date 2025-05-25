@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cool Unblocked Games</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+      font-family: 'Arial', sans-serif;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+      color: #333;
+      transition: opacity 0.5s ease;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1.5em;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #gameContainer {
+      width: 640px;
+      height: 480px;
+      max-width: 100%;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="gameTitle">Cool Unblocked Games</h1>
+  <button id="playButton" onclick="playGame()">Play</button>
+
+  <div id="gameContainer">
+    <div id="game"></div>
+  </div>
+
+  <script>
+    function playGame() {
+      const gameContainer = document.getElementById('gameContainer');
+      const button = document.getElementById('playButton');
+      const title = document.getElementById('gameTitle');
+      
+      gameContainer.style.display = "block";
+      button.style.display = "none";
+      title.style.opacity = "0";
+      setTimeout(() => {
+        title.style.display = "none";
+      }, 500);
+
+      // Set EmulatorJS parameters dynamically
+      window.EJS_player = '#game';
+      window.EJS_core = 'gba';
+      window.EJS_gameUrl = 'Pokemon - Emerald Version (U).gba';
+      window.EJS_pathtodata = 'https://cdn.jsdelivr.net/gh/ethanaobrien/emulatorjs@main/data/';
+
+      // Dynamically load the EmulatorJS script
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/gh/ethanaobrien/emulatorjs@main/data/loader.js';
+      document.body.appendChild(script);
+    }
+  </script>
+</body>
+</html>
